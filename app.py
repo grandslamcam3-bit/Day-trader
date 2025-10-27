@@ -1,4 +1,3 @@
-pip install streamlit[charts]
 """
 Day Trdr - Streamlit app (real data + AI explanations)
 
