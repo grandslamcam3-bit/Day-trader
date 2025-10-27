@@ -16,6 +16,28 @@ Notes:
 - If both POLYGON and FINNHUB are available the app prefers POLYGON for symbol search and history.
 - The OpenAI call is optional and only used for a friendly human-readable explanation.
 - This app is for education/demonstration only. Do not trade real capital solely from these signals.
+
+import os
+import sys
+import subprocess
+
+# ✅ Auto-install missing dependencies (Plotly and others)
+def ensure_package(pkg):
+    try:
+        __import__(pkg)
+    except ModuleNotFoundError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
+
+# Ensure plotly is available before importing
+ensure_package("plotly")
+
+import streamlit as st
+import numpy as np
+import pandas as pd
+import plotly.express as px
+from dotenv import load_dotenv
+from datetime import datetime, timedelta
+
 """
 import os
 import math
@@ -102,22 +124,6 @@ def fetch_quote_finnhub(symbol: str):
         pass
     return None
 
-import os
-import sys
-import subprocess
-import streamlit as st
-import numpy as np
-import pandas as pd
-
-# Auto-install Plotly if missing
-try:
-    import plotly.express as px
-except ModuleNotFoundError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "plotly"])
-    import plotly.express as px
-
-from dotenv import load_dotenv
-from datetime import datetime, timedelta
 
 @st.cache_data(ttl=120)
 def fetch_history(symbol: str, period="1mo"):
