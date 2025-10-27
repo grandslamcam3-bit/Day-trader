@@ -102,6 +102,16 @@ def fetch_quote_finnhub(symbol: str):
         pass
     return None
 
+import subprocess
+import sys
+
+# Auto-install Plotly if missing
+try:
+    import plotly.express as px
+except ModuleNotFoundError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "plotly"])
+    import plotly.express as px
+
 @st.cache_data(ttl=120)
 def fetch_history(symbol: str, period="1mo"):
     """
