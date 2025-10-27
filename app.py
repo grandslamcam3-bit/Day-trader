@@ -45,7 +45,7 @@ st.caption("Numeric scores + descriptive AI explanations (if OpenAI key provided
 st.sidebar.header("Search & Settings")
 query = st.sidebar.text_input("Ticker or company", value="AAPL")
 timeframe = st.sidebar.selectbox("Prediction timeframe", ["scalp", "day", "swing"])
-history_period = st.sidebar.selectbox("History period", ["7d", "1mo", "3mo", "1y"], index=1)
+history_period = st.sidebar.selectbox("History period", ["1m", "5m", "1h", "1d", "1w", "1mo", "3mo", "6mo", "YTD", "1y", "5y", "ALL"], index=1)
 max_history_points = 200
 
 st.sidebar.markdown("---")
