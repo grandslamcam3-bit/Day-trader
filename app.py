@@ -495,7 +495,7 @@ with col4:
     # trigger analysis on button or page load
     if st.session_state.get("run_analysis") or True:
         ensemble = ensemble_predict(df, timeframe)
-        st.metric("Recommendation", ensemble["recommended"])
+        st.metric("Recommendation", ensemble.get("recommended", "HOLD"))
         st.metric("Confidence", f"{ensemble['confidence']*100:.0f}%")
         st.write("Scores — Long / Short:", f"{ensemble['long']}  /  {ensemble['short']}")
         st.write("Stop-loss suggestion (percent):", f"{ensemble['stop_loss_pct']*100:.2f}%")
