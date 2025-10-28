@@ -470,21 +470,13 @@ else:
         st.session_state["run_analysis"] = time.time()
 
 with col2:
-    st.subheader("📊 Chart & Fundamentals")
+    st.subheader("Chart & Fundamentals")
 
-    # Let user select a stock ticker
-    selected = st.text_input("Enter a stock ticker (e.g., AAPL, TSLA):").upper()
-    history_period = "1mo"
+    selected = st.session_state.get("selected", query.upper())
+    df = fetch_history(selected, period=history_period)
 
-    if selected:
-        df = fetch_history(selected, period=history_period)
-        if df is None or df.empty:
-            st.warning("No historical data available for this symbol.")
-        else:
-            st.line_chart(df["close"])
-    else:
-        st.info("Please enter a ticker symbol above to view data.")
-
+    if df is None or df.empty:
+        st.warning("No historical data available for this symbol with current API keys.")
     else:
         fig = px.line(df, x="Date", y="Close", title=f"{selected} — Close price")
         st.plotly_chart(fig, use_container_width=True)
@@ -504,6 +496,7 @@ with col2:
         st.json(quote)
     else:
         st.write("Quote endpoint not available (no Finnhub key).")
+
 
 # Right column: news + prediction
 col3, col4 = st.columns([1.6, 1])
