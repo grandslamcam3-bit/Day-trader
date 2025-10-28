@@ -451,7 +451,10 @@ col1, col2 = st.columns([1.2, 2])
 with col1:
     st.subheader("Search / Select")
     results = search_tickers(query)
-    if len(results) == 0:
+    st.write("DEBUG: results type:", type(results))
+st.write("DEBUG: results value:", results)
+if not results or len(results) == 0:
+    st.warning("No results found for that query.")
         st.info("No results — try a different query or enter a symbol (e.g., AAPL).")
     else:
         for r in results:
