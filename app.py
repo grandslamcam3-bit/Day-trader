@@ -454,8 +454,7 @@ with col1:
     st.write("DEBUG: results type:", type(results))
 st.write("DEBUG: results value:", results)
 if not results or len(results) == 0:
-    st.warning("No results found for that query.")
-     st.info("No results — try a different query or enter a symbol (e.g., AAPL).")
+    st.info("No results — try a different query or enter a symbol (e.g., AAPL).")
     else:
         for r in results:
             if st.button(r["symbol"] + ((" — " + r["name"]) if r.get("name") else ""), key="btn_"+r["symbol"]):
