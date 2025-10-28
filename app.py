@@ -89,6 +89,20 @@ def search_tickers(q: str):
     # fallback: echo
     return [{"symbol": q.upper(), "name": ""}]
 
+        import streamlit as st
+        import finnhub
+
+        # Access the Finnhub API key from st.secrets
+        finnhub_api_key = st.secrets["FINNHUB_API_KEY"]
+
+        # Initialize the Finnhub client
+        finnhub_client = finnhub.Client(api_key=finnhub_api_key)
+
+        # You can now use finnhub_client to make API calls
+        # For example:
+        # data = finnhub_client.quote('AAPL')
+        # st.write(data)
+
 @st.cache_data(ttl=30)
 def fetch_quote_finnhub(symbol: str):
     if not FINNHUB_KEY:
