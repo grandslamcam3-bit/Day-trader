@@ -77,7 +77,19 @@ def search_tickers(q: str):
         except Exception:
             pass
 
+import os
+import requests
+from dotenv import load_dotenv
 
+# Load .env variables
+load_dotenv()
+
+FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY")
+
+def get_stock_quote(symbol):
+    url = f"https://finnhub.io/api/v1/quote?symbol={symbol}&token={d40k10pr01qqo3qiek8gd40k10pr01qqo3qiek90}"
+    response = requests.get(url)
+    return response.json()
     # Finnhub search
     if FINNHUB_KEY:
         try:
