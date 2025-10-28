@@ -77,9 +77,6 @@ def search_tickers(q: str):
         except Exception:
             pass
 
-FINNHUB_API_KEY = os.getenv("d40k10pr01qqo3qiek8gd40k10pr01qqo3qiek90")
-url = f"https://finnhub.io/api/v1/quote?symbol=AAPL&token={d40k10pr01qqo3qiek8gd40k10pr01qqo3qiek90}"
-quote = requests.get(url).json()
 
     # Finnhub search
     if FINNHUB_KEY:
