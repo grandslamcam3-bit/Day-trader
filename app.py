@@ -38,7 +38,7 @@ OPENAI_KEY = os.getenv("OPENAI_API_KEY", "") or None
 
 # UI
 st.set_page_config(page_title="Day Trdr", layout="wide")
-st.title("📈 Day Trdr — Market data + AI trade guidance")
+st.title("Day Trdr — Market data + AI trade guidance")
 st.caption("Numeric scores + descriptive AI explanations (if OpenAI key provided)")
 
 # Sidebar controls
@@ -55,7 +55,7 @@ st.sidebar.text("Finnhub: %s" % ("configured" if FINNHUB_KEY else "not set"))
 st.sidebar.text("NewsAPI: %s" % ("configured" if NEWSAPI_KEY else "not set"))
 st.sidebar.text("OpenAI: %s" % ("configured" if OPENAI_KEY else "not set"))
 st.sidebar.markdown("---")
-st.sidebar.markdown("⚠️ This tool is educational. Always backtest before real trading.")
+st.sidebar.markdown("This tool is educational. Always backtest before real trading.")
 
 # ---------------------------
 # Helper: API wrappers
