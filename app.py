@@ -38,7 +38,7 @@ OPENAI_KEY = os.getenv("OPENAI_API_KEY", "") or None
 
 # UI
 st.set_page_config(page_title="Day Trdr", layout="wide")
-st.title("Day Trdr — Market data + AI trade guidance")
+st.title("Day Trader — Market data + AI trade guidance")
 st.caption("Numeric scores + descriptive AI explanations (if OpenAI key provided)")
 
 # Sidebar controls
